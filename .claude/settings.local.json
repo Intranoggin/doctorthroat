@@ -29,7 +29,9 @@
       "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" shell am start -n com.doctorthroat.app/.MainActivity)",
       "Bash(timeout 2 \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" logcat com.doctorthroat.app:V Flashlight:V -d)",
       "Bash(./gradlew.bat assembleDebug installDebug)",
-      "Bash(.gitignore:*)"
+      "Bash(.gitignore:*)",
+      "Bash(./gradlew.bat compileDebugKotlin)",
+      "Bash(./gradlew.bat compileDebugKotlin --stacktrace)"
     ]
   }
 }

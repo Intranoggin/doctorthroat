@@ -189,7 +189,6 @@ private fun startCamera(
             )
 
             onCameraReady(camera)
-            Log.d("CameraX", "Camera bound successfully with torch support")
         } catch (e: Exception) {
             Log.e("CameraX", "Camera binding failed: ${e.message}", e)
             onCameraReady(null)
@@ -201,12 +200,9 @@ private fun setTorchMode(camera: Camera, enable: Boolean) {
     try {
         if (camera.cameraInfo.hasFlashUnit()) {
             camera.cameraControl.enableTorch(enable)
-            Log.d("Flashlight", "Torch mode set to: $enable")
-        } else {
-            Log.w("Flashlight", "Device does not have a flash unit")
         }
     } catch (e: Exception) {
-        Log.e("Flashlight", "Failed to set torch mode: ${e.message}", e)
+        Log.e("Flashlight", "Failed to set torch mode", e)
     }
 }
 
