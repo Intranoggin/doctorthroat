@@ -1,0 +1,60 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew:*)",
+      "Bash(gradle:*)",
+      "Bash(adb:*)",
+      "Bash(emulator:*)",
+      "Bash(git:*)",
+      "Read",
+      "Edit",
+      "Write"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | grep -E '\\.(kt|java|xml|gradle)$' && echo '{\"systemMessage\": \"Android file updated. Run ./gradlew build to verify.\"}' || true"
+          }
+        ]
+      }
+    ]
+  },
+  "env": {
+    "GRADLE_USER_HOME": ".gradle",
+    "ANDROID_SDK_ROOT": "%LOCALAPPDATA%\\Android\\Sdk",
+    "GRADLE_OPTS": "-Xmx4096m"
+  },
+  "sandbox": {
+    "network": {
+      "allowedDomains": [
+        "*.gradle.org",
+        "*.gradle.io",
+        "gradle.org",
+        "gradle.io",
+        "*.maven.org",
+        "maven.org",
+        "repo.maven.apache.org",
+        "repo1.maven.org",
+        "*.maven.apache.org",
+        "mavencentral.sonatype.com",
+        "central.sonatype.com",
+        "*.sonatype.com",
+        "dl.google.com",
+        "*.google.com",
+        "google.com",
+        "android.googleapis.com",
+        "*.googleapis.com",
+        "jcenter.bintray.com",
+        "bintray.com",
+        "plugins.gradle.org",
+        "services.gradle.org",
+        "*.mirrors.*.google.com"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Bash(where android:*)",
+      "Bash(cmd /c setup-emulator.bat)",
+      "Bash(\"$LOCALAPPDATA/Android/Sdk/cmdline-tools/latest/bin/avdmanager.bat\" create:*)",
+      "Bash(cmd /c \"echo no | \"%LOCALAPPDATA%AndroidSdkcmdline-toolslatestbinavdmanager.bat\" create avd -n \"Pixel_5_API_34\" -k \"system-images)",
+      "Bash(android-34)",
+      "Bash(google_apis)",
+      "Bash(x86_64\" -d \"Pixel 5\" -f\")",
+      "Bash(powershell -Command \"\n\\\\$avdmanager = \\\\\"\\\\$env:LOCALAPPDATA\\\\Android\\\\Sdk\\\\cmdline-tools\\\\latest\\\\bin\\\\avdmanager.bat\\\\\"\n& \\\\$avdmanager list device 2>&1 | grep -i pixel | head -20\n\")",
+      "Bash(\"$LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe\" devices:*)",
+      "Bash(gradlew.bat clean:*)",
+      "Bash(powershell -Command \"\n\\\\$wrapperJarUrl = 'https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.jar'\n\\\\$wrapperDir = 'C:\\\\code\\\\DoctorThroat\\\\gradle\\\\wrapper'\n\\\\$wrapperJar = Join-Path \\\\$wrapperDir 'gradle-wrapper.jar'\n\nNew-Item -ItemType Directory -Path \\\\$wrapperDir -Force | Out-Null\n\nWrite-Host 'Downloading gradle wrapper jar...'\ntry {\n    \\(New-Object System.Net.WebClient\\).DownloadFile\\(\\\\$wrapperJarUrl, \\\\$wrapperJar\\)\n    Write-Host 'Gradle wrapper ready!'\n} catch {\n    Write-Host 'Could not download wrapper. Trying build...'\n}\n\")",
+      "Bash(cmd /c \"gradlew.bat clean assembleDebug\")",
+      "Bash(powershell -Command \"\ncd 'C:\\\\code\\\\DoctorThroat'\nWrite-Host 'Starting build...'\n& .\\\\gradlew.bat clean assembleDebug 2>&1 | Select-Object -Last 50\nWrite-Host 'Build complete!'\n\" 2>&1)",
+      "Bash(powershell -Command \"\n& 'C:\\\\Users\\\\ryan\\\\AppData\\\\Local\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe' devices -l\n\" 2>&1)",
+      "Bash(powershell -Command \"\n\\\\$adb = 'C:\\\\Users\\\\ryan\\\\AppData\\\\Local\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe'\n\nWrite-Host 'Restarting app and capturing crash...' -ForegroundColor Cyan\n& \\\\$adb shell am start -n com.doctorthroat.app/.MainActivity 2>&1 | Out-Null\nsleep 2\n\nWrite-Host 'Logs:' -ForegroundColor Cyan\n& \\\\$adb logcat -d 2>&1 | Select-String 'FATAL|Exception|crash|Error' -A 3 | Select-Object -Last 80\n\" 2>&1)",
+      "Bash(./gradlew.bat assembleDebug)",
+      "Bash(\"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" devices:*)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" devices)",
+      "Bash(./gradlew.bat installDebug)",
+      "Bash(./gradlew.bat :app:startDebugActivity)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" shell am start -n com.doctorthroat.app/.MainActivity 2>&1)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" logcat -c)",
+      "Bash(timeout 5 \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" logcat *:S com.doctorthroat.app:V)",
+      "Bash(./gradlew.bat clean:*)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" shell am start -n com.doctorthroat.app/.MainActivity)",
+      "Bash(timeout 2 \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" logcat com.doctorthroat.app:V Flashlight:V -d)",
+      "Bash(./gradlew.bat assembleDebug installDebug)",
+      "Bash(.gitignore:*)"
+    ]
+  }
+}
