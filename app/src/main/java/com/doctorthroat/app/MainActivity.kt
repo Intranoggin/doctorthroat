@@ -1,5 +1,6 @@
 package com.doctorthroat.app
 
+import android.Manifest
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -23,6 +24,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.rememberPermissionState
 
 class MainActivity : ComponentActivity() {
     private var cameraRef: Camera? = null
@@ -44,15 +47,18 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun ThroatCheckScreen(
     context: Context,
     onCameraReady: (Camera?) -> Unit
 ) {
+    val cameraPermissionState = rememberPermissionState(Manifest.permission.CAMERA)
     var isFlashlightOn by remember { mutableStateOf(false) }
     var camera by remember { mutableStateOf<Camera?>(null) }
 
     LaunchedEffect(Unit) {
+        cameraPermissionState.launchPermissionRequest()
         onCameraReady(camera)
     }
 
