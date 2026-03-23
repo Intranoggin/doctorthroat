@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:color="@color/ic_launcher_background"/>
-    <foreground>
-        <vector xmlns:android="http://schemas.android.com/apk/res/android"
-            android:width="108dp"
-            android:height="108dp"
-            android:viewportWidth="108"
-            android:viewportHeight="108">
-            <!-- Throat/pharynx shape -->
-            <path android:pathData="M54,20 C65,20 72,28 72,40 C72,52 70,62 54,74 C38,62 36,52 36,40 C36,28 43,20 54,20 Z"
-                android:fillColor="#03DAC6"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
 
-            <!-- Inner throat highlight -->
-            <path android:pathData="M50,38 C50,38 52,44 54,50 C56,44 58,38 58,38 C58,35 56,33 54,33 C52,33 50,35 50,38 Z"
-                android:fillColor="#BB86FC"/>
+    <!-- Black background -->
+    <path android:pathData="M0,0 L108,0 L108,108 L0,108 Z"
+        android:fillColor="#000000"/>
 
-            <!-- Flashlight indicator -->
-            <path android:pathData="M70,25 C75,25 78,22 78,17 C78,12 75,9 70,9 C65,9 62,12 62,17 C62,22 65,25 70,25 Z"
-                android:fillColor="#FFD700"/>
-        </vector>
-    </foreground>
-</adaptive-icon>
+    <!-- Throat/pharynx shape -->
+    <path android:pathData="M54,20 C65,20 72,28 72,40 C72,52 70,62 54,74 C38,62 36,52 36,40 C36,28 43,20 54,20 Z"
+        android:fillColor="#03DAC6"/>
+
+    <!-- Inner throat highlight -->
+    <path android:pathData="M50,38 C50,38 52,44 54,50 C56,44 58,38 58,38 C58,35 56,33 54,33 C52,33 50,35 50,38 Z"
+        android:fillColor="#BB86FC"/>
+
+    <!-- Flashlight indicator -->
+    <path android:pathData="M70,25 C75,25 78,22 78,17 C78,12 75,9 70,9 C65,9 62,12 62,17 C62,22 65,25 70,25 Z"
+        android:fillColor="#FFD700"/>
+</vector>

@@ -31,7 +31,32 @@
       "Bash(./gradlew.bat assembleDebug installDebug)",
       "Bash(.gitignore:*)",
       "Bash(./gradlew.bat compileDebugKotlin)",
-      "Bash(./gradlew.bat compileDebugKotlin --stacktrace)"
+      "Bash(./gradlew.bat compileDebugKotlin --stacktrace)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" uninstall com.doctorthroat.app)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\emulator\\\\emulator.exe\" -list-avds)",
+      "Bash(./gradlew.bat installDebug --info)",
+      "Bash(tasklist:*)",
+      "Bash(cmd /c start \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\emulator\\\\emulator.exe\" -avd Nexus_5X_API_36 -no-snapshot-load sleep 30 ./gradlew.bat installDebug)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" kill-server)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" start-server)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" devices -l)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\cmdline-tools\\\\latest\\\\bin\\\\avdmanager.bat\" list avd)",
+      "Bash(powershell -ExecutionPolicy Bypass -File setup-emulator.ps1 2>&1)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\cmdline-tools\\\\latest\\\\bin\\\\sdkmanager.bat\" --list)",
+      "Bash(mkdir -p \"$LOCALAPPDATA/.android/avd/DoctorThroat_AVD.avd\")",
+      "Read(//c/code/DoctorThroat/$LOCALAPPDATA/.android/avd/**)",
+      "Bash(cmd /c start \"\" \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\emulator\\\\emulator.exe\" -avd DoctorThroat_AVD -no-snapshot-load -no-audio sleep 45 ./gradlew.bat installDebug)",
+      "Bash(cmd /c \"%LOCALAPPDATA%\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\" shell pm list packages)",
+      "Bash(set ANDROID_HOME=%LOCALAPPDATA%AndroidSdk)",
+      "Bash(set PATH=%PATH%)",
+      "Bash(%ANDROID_HOME%platform-tools)",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -File run_on_emulator.ps1)",
+      "Bash(cmd /c %LOCALAPPDATA%AndroidSdkplatform-toolsadb.exe uninstall com.doctorthroat.app 2 sleep 2 ./gradlew.bat installDebug)",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -File reinstall_phone.ps1 2>&1)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File \"./reinstall_phone.ps1\")",
+      "Bash(powershell.exe -Command \"\n\\\\$sdkPath = \\\\\"\\\\$env:LOCALAPPDATA\\\\\\\\Android\\\\\\\\Sdk\\\\\"\n\\\\$adb = \\\\\"\\\\$sdkPath\\\\\\\\platform-tools\\\\\\\\adb.exe\\\\\"\n& \\\\$adb shell pm clear com.android.launcher3\n& \\\\$adb shell pm clear com.samsung.android.app.launcher\nWrite-Host 'Launcher caches cleared' -ForegroundColor Green\n\")",
+      "Bash(xargs cat:*)",
+      "Bash(xargs ls:*)"
     ]
   }
 }
